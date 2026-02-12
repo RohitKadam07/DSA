@@ -1,0 +1,31 @@
+242. Valid Anagram
+
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+Example 1:
+Input: s = "anagram", t = "nagaram"
+Output: true
+
+
+</>CODE
+class Solution {
+    public boolean isAnagram(String s, String t) {
+           if (s.length() != t.length()) {      //if length of s1=s2, then only proceed 
+            return false;
+        }
+        int []freq=new int[26];         //create new arr to store value
+
+        for(int i=0;i<s.length();i++){
+            freq[s.charAt(i) - 'a']++;      // Increase count for s
+            freq[t.charAt(i) - 'a']--;      // Decrease count for t
+        }
+
+        for (int count : freq) {        // Check if all frequencies are zero
+           if (count !=0){
+            return false;       //if count != 0, its not Anagram
+            }
+        }
+        return true;        //  if count = 0, its Anagram
+    }
+
+}
